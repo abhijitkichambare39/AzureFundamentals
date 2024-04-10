@@ -1,1 +1,3 @@
 # AzureFundamentals
+
+## Master Branch Protection
