@@ -1,0 +1,21 @@
+﻿@model List<Blob>
+
+<div class="p-1 container">
+    @* <div class="row">
+        <h4 class="text-dark">Images</h4>
+    </div> *@
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-2 border-0 p-2 shadow-lg rounded-2" style="margin-right: 30px;">
+                <div class="d-flex flex-column align-items-center ">
+                    <h5 class="text-light">@item.Title</h5>
+                    <div  style="width: 100%; height: auto;">
+                        <img src="@item.Uri" class="img-fluid" style="max-width: 100%; max-height: 100%;" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

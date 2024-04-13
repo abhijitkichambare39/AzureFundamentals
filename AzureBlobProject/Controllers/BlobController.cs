@@ -1,5 +1,8 @@
 ﻿using AzureBlobProject.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Reflection.Metadata;
+using AzureBlobProject.Models;
+using Blob = AzureBlobProject.Models.Blob;
 
 namespace AzureBlobProject.Controllers
 {
@@ -28,15 +31,14 @@ namespace AzureBlobProject.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddFile(string containerName,IFormFile file)
+        public async Task<IActionResult> AddFile(string containerName,IFormFile file ,Blob blob)
         {
             if (file == null || file.Length < 1) return View();
 
             //name.png
             //name_guid.png for same filename restriction
             var filename =Path.GetFileNameWithoutExtension(file.FileName)+ "_"+ Guid.NewGuid() + Path.GetExtension(file.FileName);
-
-            var result = await _blobService.UploadBlob(filename, file, containerName);
+            var result = await _blobService.UploadBlob(filename, file, containerName,blob);
 
             if (result)
             {

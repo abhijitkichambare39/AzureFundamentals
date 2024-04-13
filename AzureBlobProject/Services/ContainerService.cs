@@ -2,6 +2,7 @@
 using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 using AzureBlobProject.Models;
+using Microsoft.AspNetCore.Mvc;
 using System.Text;
 using System.Web;
 
@@ -82,7 +83,16 @@ namespace AzureBlobProject.Services
 
                 await foreach (BlobItem blobItem in blobContainerClient.GetBlobsAsync())
                 {
-                    blobs.Add(blobItem.Name);
+                    //get metadata
+                    var blobClient = blobContainerClient.GetBlobClient(blobItem.Name);
+                    BlobProperties blobProperties = await blobClient.GetPropertiesAsync();
+                    string blobToAdd = "";// blobItem.Name;
+                    if (blobProperties.Metadata.ContainsKey("title"))
+                    {
+                        blobToAdd += "(" + blobProperties.Metadata["title"] + ")";
+                    }
+
+                    blobs.Add(blobToAdd);
                 }
 
                 containerBlobMap.Add(item.Name, blobs);
