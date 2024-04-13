@@ -1,7 +1,10 @@
 ﻿
 using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
+using Azure.Storage.Blobs.Specialized;
+using Azure.Storage.Sas;
 using AzureBlobProject.Models;
+using System.Net;
 
 namespace AzureBlobProject.Services
 {
@@ -89,16 +92,55 @@ namespace AzureBlobProject.Services
         {
             BlobContainerClient objBlobContainer = _blobServiceClient.GetBlobContainerClient(containerName);
             var blobs = objBlobContainer.GetBlobsAsync();
-
             var blobList = new List<Blob>();
+            //string sasContainerSignature = "";
+
+            // if SAS-TOKEN at STORAGE-ACCOUNT LEVEL 
+            // go to azureportal --> storage-Account --> shared-Access-Signatures --> Allowed Resources tick all checkboxes --->
+            // Generate SAS  & Conn String --> Copy & Paste SAS-Conn-String in appsettings.JSON
+
+            #region SAS-Token CONTAINER-LEVEL
+            //if (objBlobContainer.CanGenerateSasUri)
+            //{
+            //    BlobSasBuilder sasBuilder = new()
+            //    {
+            //        BlobContainerName = objBlobContainer.Name,
+            //        //BlobName = bobClient.Name,
+            //        Resource = "b",
+            //        ExpiresOn = DateTimeOffset.UtcNow.AddHours(1),
+            //    };
+            //    sasBuilder.SetPermissions(BlobSasPermissions.Read);// ) || BlobSasPermissions.Write);
+            //    //blobIndividual.Uri = bobClient.GenerateSasUri(sasBuilder).AbsoluteUri;
+            //    sasContainerSignature = objBlobContainer.GenerateSasUri(sasBuilder).AbsoluteUri.Split("?")[1].ToString();
+            //}
+            #endregion
 
             await foreach (var item in blobs)
             {
                 var bobClient = objBlobContainer.GetBlobClient(item.Name);
                 Blob blobIndividual = new()
                 {
-                    Uri = bobClient.Uri.AbsoluteUri
+                    // if container level added then attach ? + sassignature ---- else bobClient.Uri.AbsoluteUri
+                    Uri = bobClient.Uri.AbsoluteUri // + "?" + sasContainerSignature
+
+
                 };
+
+                #region SAS-Token BLOB-Level . We can also do at CONTAINER-LEVEL
+                //if (bobClient.CanGenerateSasUri)
+                //{
+                //    BlobSasBuilder sasBuilder = new()
+                //    {
+                //        BlobContainerName = bobClient.GetParentBlobContainerClient().Name,
+                //        BlobName = bobClient.Name,
+                //        Resource = "b",
+                //        ExpiresOn = DateTimeOffset.UtcNow.AddHours(1),
+                //    };
+                //    sasBuilder.SetPermissions(BlobSasPermissions.Read);// ) || BlobSasPermissions.Write);
+                //    blobIndividual.Uri = bobClient.GenerateSasUri(sasBuilder).AbsoluteUri;
+                //}
+                #endregion
+
                 BlobProperties properties = await bobClient.GetPropertiesAsync();
                 if (properties.Metadata.ContainsKey("title"))
                 {
