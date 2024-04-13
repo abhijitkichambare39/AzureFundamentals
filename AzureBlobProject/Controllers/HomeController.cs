@@ -8,22 +8,26 @@ namespace AzureBlobProject.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private IContainerService _containerService;
+        private readonly IContainerService _containerService;
+        private readonly IBlobService _blobService;
 
-        public HomeController(ILogger<HomeController> logger, IContainerService containerService)
+        public HomeController(ILogger<HomeController> logger, IContainerService containerService,IBlobService blobService)
         {
             _logger = logger;
             _containerService = containerService;
+            _blobService = blobService;
         }
+
+
 
         public async Task<IActionResult> Index()
         {
             return View(await _containerService.GetAllContainersAndBlobsDictonary());
         }
 
-        public IActionResult Privacy()
+        public async Task<IActionResult> Images()
         {
-            return View();
+            return View(await _blobService.GetAllBlobsWithUri("private-container-images"));
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

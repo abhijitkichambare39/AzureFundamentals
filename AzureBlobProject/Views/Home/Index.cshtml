@@ -18,6 +18,12 @@
     padding: 0;
     }
     </style> *@
+
+
+    <style>
+        .card {
+        }
+    </style>
 </head>
 <body>
     @*     <div class="container">
@@ -47,17 +53,18 @@
     </div>
     } *@
 
+
     <div class="container-fluid">
-        <div class="row flex-nowrap overflow-auto">
+        <div class="row flex-nowrap overflow-y-auto">
             @foreach (var item in Model)
             {
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="card border-info mb-3" style="max-width: 25rem;">
-                        <div class="card-header">@item.Key</div>
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                    <div class="card border-secondary mb-3 shadow-lg" style="max-width: 25rem;max-height:25rem;overflow:auto">
+                        <div class="card-header text-dark">@item.Key</div>
                         <div class="card-body" style="word-wrap:break-word;">
                             @foreach (var itemBlob in item.Value)
                             {
-                                <p class="card-text small">@itemBlob</p>
+                                <p class="card-text small shadow-lg rounded p-1">@itemBlob</p>
                             }
                         </div>
                     </div>

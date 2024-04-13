@@ -1,17 +1,33 @@
-﻿<form method="post" asp-action="AddFile" asp-controller="Blob" enctype="multipart/form-data">
+﻿@model Blob
+
+<form method="post" asp-action="AddFile" asp-controller="Blob" enctype="multipart/form-data">
     <div class="container">
-        <h3>Container Name - @Context.Request.Query["containerName"].ToString()</h3>
+        <h3>Container Name : @Context.Request.Query["containerName"].ToString()</h3>
         <input hidden name="containerName" value="@Context.Request.Query["containerName"].ToString()" />
-        <div class="row border p-2">
-            <div class="col-12 pb-2"><h4 class="text-primary">Add Item to Blob :</h4></div>
+        <div class="row border p-2 pb-4">
 
-
-            <div class="form-group col-9">
-                <input type="file" class="form-control pt-1" name="file" />
+            <div>
+                <label for="Title" class="form-label mt-2">Title</label>
+                <input asp-for="Title" type="text" class="form-control" placeholder="Enter Title">
             </div>
-            <div class="form-group col-3">
-                <button type="submit" class="btn btn-success form-control">Add</button>
+
+            <div>
+                <label for="Comment" class="form-label mt-2">Comments</label>
+                <input asp-for="Comment" type="text" class="form-control" placeholder="Enter Comments">
+            </div>
+
+            <div>
+                <label for="formFile" class="form-label mt-2">Choose File</label>
+                <input class="form-control" type="file" name="file" />
+            </div>
+
+        </div>
+        <div class="col-12 d-flex justify-content-end">
+            <div class="form-group">
+                <button type="submit" class="btn btn-success form-control mt-2 mr-4 ">Add</button>
             </div>
         </div>
+
+
     </div>
 </form>
