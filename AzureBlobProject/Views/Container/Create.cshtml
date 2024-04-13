@@ -1,18 +1,26 @@
 ﻿@model Container
 
-<div class="container border p-3" style="background-color:#333333;color:whitesmoke">
+<div class="container border p-3" >
+    @* style="background-color:#333333;color:whitesmoke" *@
     <h2 class="text-info pb-2">Create Container</h2>
     <form method="post" asp-action="Create">
         <div class="backgroundWhite">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group row">
-                <div class="col-2">
-                    <label asp-for="Name" class="col-form-label"></label>
+                @* <div class="col-6 text-right">
+                    <label asp-for="Name" class="col-form-label text-right"></label>
                 </div>
-                <div class="col-5">
+                <div class="col-6">
                     <input asp-for="Name" class="form-control" />
                 </div>
-                <span asp-validation-for="Name" class="text-danger"></span>
+                <span asp-validation-for="Name" class="text-danger"></span> *@
+                <label asp-for="Name" class="col-6 col-form-label text-right"></label>
+                <div class="col-6">
+                    <input asp-for="Name" class="form-control" />
+                </div>
+                <div class="col-6 offset-6">
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
             </div>
             <br />
             <div class="form-group row">

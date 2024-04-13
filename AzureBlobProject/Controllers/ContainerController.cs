@@ -12,11 +12,11 @@ namespace AzureBlobProject.Controllers
 
         public ContainerController(IContainerService containerService)
         {
-                _containerService = containerService;
+            _containerService = containerService;
         }
 
 
-        public async  Task<IActionResult> Index()
+        public async Task<IActionResult> Index()
         {
             var allContainers = await _containerService.GetAllContainers();
             return View(allContainers);
@@ -30,7 +30,7 @@ namespace AzureBlobProject.Controllers
 
         public async Task<IActionResult> Create()
         {
-           return View(new Container());
+            return View(new Container());
         }
 
         [HttpPost]

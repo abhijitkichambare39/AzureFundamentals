@@ -1,8 +1,72 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model Dictionary<string, List<string>>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Container and Blob Information</title>
+    @*  <style>
+    .lidummy {
+    margin-bottom: 10px;
+    padding: 10px;
+    /* background-color: #f9f9f9; */
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .uldummy {
+    list-style-type: none;
+    padding: 0;
+    }
+    </style> *@
+</head>
+<body>
+    @*     <div class="container">
+    <h1>Container and Blob Information</h1>
+    <ul class="uldummy">
+    @foreach (var item in Model)
+    {
+    <li class="lidummy">@Html.Raw(item)</li>
+    }
+    </ul>
+    </div> *@
+
+
+    @*  <h4 class="card-title">Secondary card title</h4> *@
+    @*  @foreach (var item in Model)
+    {
+    <div class="card border-secondary mb-3" style="max-width: 25rem;">
+    <div class="card-header">@item.Key</div>
+    <div class="card-body">
+
+    @foreach (var itemBlob in item.Value)
+    {
+    <p class="card-text">@itemBlob</p>
+    }
+
+    </div>
+    </div>
+    } *@
+
+    <div class="container-fluid">
+        <div class="row flex-nowrap overflow-auto">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card border-info mb-3" style="max-width: 25rem;">
+                        <div class="card-header">@item.Key</div>
+                        <div class="card-body" style="word-wrap:break-word;">
+                            @foreach (var itemBlob in item.Value)
+                            {
+                                <p class="card-text small">@itemBlob</p>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+
+
+</body>
+</html>
