@@ -27,7 +27,14 @@ namespace AzureBlobProject.Controllers
 
         public async Task<IActionResult> Images()
         {
-            return View(await _blobService.GetAllBlobsWithUri("private-container-images"));
+            List<Blob> a = await _blobService.GetAllBlobsWithUri("private-container-images");
+            List<Blob> b = await _blobService.GetAllBlobsWithUri("public-container-images");
+
+            List<Blob> res= new List<Blob>();
+            res.AddRange(a);
+            res.AddRange(b);
+            return View(res);
+            //return View(await _blobService.GetAllBlobsWithUri("private-container-images"));
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
