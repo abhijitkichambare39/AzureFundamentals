@@ -14,3 +14,5 @@
 ### Azure-Functions-Basics
 
 ### Azure-Functions-Visual-Studio
+
+### Azure-Functions-Advanced-Triggers
