@@ -5,7 +5,7 @@ VisualStudioVersion = 17.9.34714.143
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureBlobProject", "AzureBlobProject\AzureBlobProject.csproj", "{9A0AA393-2EFE-4A4F-A0B7-1902EE552E11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureFunctionTangyWeb", "AzureFunctionTangyWeb\AzureFunctionTangyWeb.csproj", "{D37991AB-1C9B-403F-A002-4E79FDC0DA8A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureFunctionTangyWeb", "AzureFunctionTangyWeb\AzureFunctionTangyWeb.csproj", "{D37991AB-1C9B-403F-A002-4E79FDC0DA8A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AzureBlobExample", "AzureBlobExample", "{A68DD33C-356F-4B40-9295-3B803DEBF58C}"
 EndProject
@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AzureFunctionExample", "Azu
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8C5D7534-3491-4C84-B3FA-A054716B28F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureFunctionTangy", "AzureFunctionTangy\AzureFunctionTangy.csproj", "{24F02F4F-6288-4F2C-AAA7-55B0F1177E5F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureFunctionTangy", "AzureFunctionTangy\AzureFunctionTangy.csproj", "{24F02F4F-6288-4F2C-AAA7-55B0F1177E5F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,7 +39,7 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{9A0AA393-2EFE-4A4F-A0B7-1902EE552E11} = {A68DD33C-356F-4B40-9295-3B803DEBF58C}
-		{D37991AB-1C9B-403F-A002-4E79FDC0DA8A} = {31A6934E-D678-4091-8667-C15FB6C18472}
+		{D37991AB-1C9B-403F-A002-4E79FDC0DA8A} = {8C5D7534-3491-4C84-B3FA-A054716B28F7}
 		{8C5D7534-3491-4C84-B3FA-A054716B28F7} = {31A6934E-D678-4091-8667-C15FB6C18472}
 		{24F02F4F-6288-4F2C-AAA7-55B0F1177E5F} = {8C5D7534-3491-4C84-B3FA-A054716B28F7}
 	EndGlobalSection
