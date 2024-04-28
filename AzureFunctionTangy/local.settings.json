@@ -1,0 +1,10 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=azuredotnetstorage;AccountKey=BNn2rHaCI2g+vigjUHO7yMM+5tAm6EwV3z69YidLMJ9CyL0uZXU0hyaOVfXkRkjHmHLCzPqW+vmf+ASt4YinNQ==;EndpointSuffix=core.windows.net",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+    //"AzureSqlDatabase": "Server=tcp:dotnetmasterysqlserver.database.windows.net,1433;Initial Catalog=dotnetmastery-azureSQL;Persist Security Info=False;User ID=admin-sql;Password=DotnetMastery1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;",
+    "AzureSqlDatabase": "Server=DESKTOP-N4Q02OS;Database=AzureSQL;Trusted_Connection=True;MultipleActiveResultSets=true" 
+    //"CustomSendGridKeyAppSettingName": "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"
+  }
+}
