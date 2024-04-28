@@ -40,7 +40,7 @@ namespace AzureFunctionTangyWeb.Controllers
 
             if(file!= null)
             {
-                var fileName = salesRequest.Id + Path.GetExtension(file.Name);
+                var fileName = salesRequest.Id + Path.GetExtension(file.FileName);
                 BlobContainerClient blobContainerClient = _blobServiceClient.GetBlobContainerClient("functionsalesrep");
                 var bobClient = blobContainerClient.GetBlobClient(fileName);
 
